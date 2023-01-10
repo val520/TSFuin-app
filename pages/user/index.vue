@@ -111,8 +111,8 @@
 							<!-- #endif -->
 						</view>
 					</view>
-					<image src="/static/images/support.png" alt="" class='support'>
-					<view class="uni-p-b-98"></view>
+				<!-- 	<image src="/static/images/support.png" alt="" class='support'>
+					<view class="uni-p-b-98"></view> -->
 				</view>
 
 			</scroll-view>

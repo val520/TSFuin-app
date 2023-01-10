@@ -70,8 +70,16 @@
 						</view>
 					</view>
 					<view class='bottom acea-row row-right row-middle'>
+						<view v-if="item.orderInfoList[0].isCheck ===1" style="color: #999;margin-right: 20rpx;">
+							该订单需要审核
+						</view>
+						<view v-else style="color: #999;margin-right: 20rpx;">
+							该订单无需要审核
+						</view>
 						<view class='bnt cancelBnt' v-if="!item.paid" @click='cancelOrder(index,item.id)'>取消订单</view>
-						<view class='bnt bg-color' v-if="!item.paid" @click='goPay(item.payPrice,item.orderId)'>立即付款</view>
+						<view v-if="item.orderInfoList[0].isCheck === 0">
+							<view class='bnt bg-color' v-if="!item.paid" @click='goPay(item.payPrice,item.orderId)'>立即付款</view>
+						</view>
 						<view class='bnt bg-color' v-else-if="item.status== 0 || item.status== 1 || item.status== 3" @click='goOrderDetails(item.orderId)'>查看详情</view>
 						<view class='bnt bg-color' v-else-if="item.status==2" @click='goOrderDetails(item.orderId)'>去评价</view>
 						<view class='bnt cancelBnt' v-if="item.status == 3" @click='delOrder(item.id,index)'>删除订单</view>

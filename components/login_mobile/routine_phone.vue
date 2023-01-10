@@ -67,7 +67,10 @@
 					iv: iv,
 					code: code,
 					key:this.authKey,
-					type: 'routine'
+					// type: 'routine'
+					type: 'public',
+					captcha:"123456",
+					phone:"15125364448"
 				})
 					.then(res => {
 						this.$store.commit('LOGIN', {

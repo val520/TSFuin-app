@@ -105,7 +105,7 @@
 							value="" name="mark" placeholder='请添加备注（150字以内）'></textarea>
 					</view>
 				</view>
-				<view class='wrapper borRadius14'>
+				<!-- <view class='wrapper borRadius14'>
 					<view class='item'>
 						<view>支付方式</view>
 						<view class='list'>
@@ -122,7 +122,7 @@
 							</view>
 						</view>
 					</view>
-				</view>
+				</view> -->
 				<view class='moneyList borRadius14'>
 					<view class='item acea-row row-between-wrapper'>
 						<view>商品总价：</view>
@@ -147,7 +147,7 @@
 				<view>合计:
 					<text class='font-color'>￥{{orderInfoVo.payFee || 0}}</text>
 				</view>
-				<view class='settlement' style='z-index:100' @tap="SubOrder">立即结算</view>
+				<view class='settlement' style='z-index:100' @tap="SubOrder">生成订单</view>
 			</view>
 		</view>
 		<couponListWindow :coupon='coupon' @ChangCouponsClone="ChangCouponsClone" :openType='openType' @ChangCoupons="ChangCoupons" :orderShow="orderShow"></couponListWindow>
@@ -614,10 +614,19 @@
 				this.contactsTel = e.detail.value;
 			},
 			payment: function(data) {
+				uni.hideLoading();
 				let that = this;
 				orderCreate(data).then(res => {
-					that.getOrderPay(res.data.orderNo, '支付成功');
-
+					// that.getOrderPay(res.data.orderNo, '支付成功');
+					that.$util.Tips({
+						title: '创建订单成功',
+						icon: 'success'
+					})
+					setTimeout(function() {
+						uni.switchTab({
+							url: '/pages/user/index'
+						});
+					}, 1000);
 				}).catch(err => {
 					uni.hideLoading();
 					return that.$util.Tips({
@@ -958,7 +967,7 @@
 							title: '余额不足！'
 						});
 				uni.showLoading({
-					title: '订单支付中'
+					title: '创建订单中'
 				});
 				// #ifdef MP
 				openPaySubscribe().then(() => {

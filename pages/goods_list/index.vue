@@ -53,7 +53,9 @@
 								<view class='vip-money' v-if="item.vip_price && item.vip_price > 0">￥{{item.vip_price}}
 									<image src='../../static/images/vip.png'></image>
 								</view>
-								<view>已售{{Number(item.sales) + Number(item.ficti) || 0}}{{item.unitName}}</view>
+								<view>已售{{Number(item.sales) + Number(item.ficti) || 0}}</view>
+								<view v-if="item.isCheck===1">该商品无需审核</view>
+								<view v-else>该商品需审核</view>
 							</view>
 						</view>
 					</view>

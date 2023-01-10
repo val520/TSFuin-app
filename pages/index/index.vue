@@ -5,7 +5,7 @@
 			<view class="header">
 				<view class="serch-wrapper flex">
 					<view class="logo">
-						<image :src="logoUrl" mode=""></image>
+						<!-- <image :src="logoUrl" mode=""></image> -->
 					</view>
 					<navigator url="/pages/goods_search/index" class="input" hover-class="none"><text
 							class="iconfont icon-xiazai5"></text>
@@ -19,7 +19,7 @@
 				<view class="serch-box" style="height: 40px;">
 					<view class="serch-wrapper flex">
 						<view class="logo">
-							<image :src="logoUrl" mode=""></image>
+							<!-- <image :src="logoUrl" mode=""></image> -->
 						</view>
 						<navigator url="/pages/goods_search/index" class="input" hover-class="none"><text
 								class="iconfont icon-xiazai5"></text>
@@ -258,7 +258,11 @@
 				followHid: true,
 				followCode: false,
 				logoUrl: "",
-				imgUrls: [],
+				imgUrls: [
+					{
+						pic:"https://img0.baidu.com/it/u=1406846857,3371164398&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=359"
+					},
+				],
 				itemNew: [],
 				menus: [],
 				bastInfo: '',
@@ -478,7 +482,7 @@
 					})
 					that.$set(that, "logoUrl", res.data.logoUrl);
 					that.$set(that, "site_name", '首页');
-					that.$set(that, "imgUrls", res.data.banner);
+					// that.$set(that, "imgUrls", res.data.banner);
 					that.$set(that, "menus", res.data.menus);
 					that.$set(that, "roll", res.data.roll ? res.data.roll : []);
 					// #ifdef H5
@@ -968,12 +972,12 @@
 
 			.serch-wrapper {
 				align-items: center;
-
-
 				.logo {
 					width: 118rpx;
 					height: 42rpx;
 					margin-right: 24rpx;
+					font-size: 40rpx;
+					color: #FFF;
 				}
 
 				image {
